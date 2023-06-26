@@ -1,0 +1,29 @@
+﻿<Application x:Class="ProgramowanieProj3.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProgramowanieProj3"
+          
+             xmlns:viewModel="clr-namespace:ProgramowanieProj3.ViewModel"
+             xmlns:view="clr-namespace:ProgramowanieProj3.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <DataTemplate DataType="{x:Type viewModel:PracownikModel}">
+
+            <view:Pracownicy/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:PlaceModel}">
+
+            <view:Place/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:SkladkiModel}">
+
+            <view:Skladki/>
+        </DataTemplate>
+
+
+    </Application.Resources>
+</Application>

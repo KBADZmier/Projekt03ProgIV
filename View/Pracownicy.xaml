@@ -1,0 +1,142 @@
+﻿<UserControl 
+    
+     x:Class="ProgramowanieProj3.View.Pracownicy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:viewModel="clr-namespace:ProgramowanieProj3.ViewModel"
+    d:DataContext="{d:DesignInstance Type=viewModel:PracownikModel}">
+
+    <Grid Height="374" Width="456">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Pracownik" HorizontalContentAlignment="Center" Grid.Column="0" Margin="1,1,0,0" />
+
+        <ComboBox Name="Prac" Margin="10,10,18,14"
+         ItemsSource="{Binding Pracownik, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,18,14" >
+                        <TextBlock Text=" IDPracownika "/>
+                        <TextBlock Text="{Binding Path=IdPracownika}"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Imię:"  Grid.Column="0" Grid.Row="2" Margin="0,0,0,18"/>
+        <TextBlock Margin="0,25,0,0" FontSize="14" Grid.Row="2" Text="{Binding ElementName=Prac,Path=SelectedItem.Imie }" >
+
+        </TextBlock>
+        <Label Content="Nazwisko:"  Grid.Column="0" Grid.Row="3" Margin="0,0,0,18"/>
+        <TextBlock Margin="0,25,0,0" FontSize="14" Grid.Row="3" Text="{Binding ElementName=Prac,Path=SelectedItem.Nazwisko}" >
+
+        </TextBlock>
+        <Label Content="Plec:"  Grid.Column="0" Grid.Row="4" Margin="0,0,0,18"/>
+        <TextBlock  FontSize="14" Grid.Row="4" Text="{Binding ElementName=Prac,Path=SelectedItem.Plec}" Margin="0,25,0,0">
+
+        </TextBlock>
+        <Label Content="Adres:"  Grid.Column="0" Grid.Row="5" Margin="0,0,0,18"/>
+        <TextBlock Margin="0,25,0,0" FontSize="14" Grid.Row="5" Text="{Binding ElementName=artistCombo,Path=SelectedItem.Adres}">
+        </TextBlock>
+
+
+        <Label Content="Nr konta:"  Grid.Column="0" Grid.Row="6" Margin="0,0,0,18"/>
+        <TextBlock Margin="0,25,0,0" FontSize="14" Grid.Row="6" Text="{Binding ElementName=Prac,Path=SelectedItem.NrKonta}">
+
+        </TextBlock>
+        <Label Content="Telefon Kontaktowy:"  Grid.Column="0" Grid.Row="7" Margin="0,0,0,18" />
+        <TextBlock Margin="0,25,0,0" FontSize="14" Grid.Row="7" Text="{Binding ElementName=Prac,Path=SelectedItem.TelefonKontaktowy}">
+        </TextBlock>
+
+
+
+        <Label Content="Dodaj pracownika" HorizontalContentAlignment="Center" Grid.Column="1" Margin="1,1,0,0" />
+        <!--<ComboBox Name="AktPrac" Margin="10,10,18,14"
+        ItemsSource="{Binding Pracownik}" SelectedValuePath="ID_Pracownik" SelectedValue="{Binding SelectedEmployeeId}"  Grid.Row="1" Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,18,14" >
+                        <TextBlock Text=" ID_Pracownika "/>
+                        <TextBlock Text="{Binding Path=IdPracownika}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>-->
+        <TextBox InputScope="Number"  Grid.Column="1" Grid.Row="1" Margin="10,10,18,14" Text="{Binding IdPracownika, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="10,10,18,14" Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged}"  ></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="3" Margin="10,10,18,14" Text="{Binding Nazwisko, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="4" Margin="10,10,18,14" Text="{Binding Plec, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="5" Margin="10,10,18,14" Text="{Binding Adres, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="6" Margin="10,10,18,14" Text="{Binding NrKonta, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="7" Margin="10,10,18,14" Text="{Binding TelefonKontaktowy, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+
+        <Label Content="Usuń pracownika" HorizontalContentAlignment="Center" Grid.Column="2" Margin="1,1,0,0" />
+        <ComboBox Name="UsunPrac" Margin="10,10,18,14"
+        ItemsSource="{Binding Pracownik}" SelectedValuePath="IdPracownika" SelectedValue="{Binding SelectedEmployeeId}"  Grid.Row="1" Grid.Column="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,18,14" >
+                        <TextBlock Text=" ID_Pracownika "/>
+                        <TextBlock Text="{Binding Path=IdPracownika}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Aktualizuj pracownika" HorizontalContentAlignment="Center" Grid.Column="3" Margin="1,1,0,0" />
+        <ComboBox Name="AktPrac" Margin="10,10,18,14"
+        ItemsSource="{Binding Pracownik}" SelectedValuePath="IdPracownika" SelectedValue="{Binding SelectedEmployeeId}"  Grid.Row="1" Grid.Column="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,18,14" >
+                        <TextBlock Text=" ID_Pracownika "/>
+                        <TextBlock Text="{Binding Path=IdPracownika}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+       
+        <TextBox Grid.Column="3" Grid.Row="2" Margin="10,10,18,14" Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="3" Margin="10,10,18,14" Text="{Binding Nazwisko, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="4" Margin="10,10,18,14" Text="{Binding Plec, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="5" Margin="10,10,18,14" Text="{Binding Adres, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="6" Margin="10,10,18,14" Text="{Binding NrKonta, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="7" Margin="10,10,18,14" Text="{Binding TelefonKontaktowy, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+
+
+
+        <!--<Button  Content="Wyświetl" Margin="5,5,5,5" Background ="#0275d8" Command="{Binding }"  Grid.Column="2" Grid.Row="8" />-->
+        <Button  Content="Dodaj" Margin="5,5,5,5" Background ="Yellow" Command="{Binding addPracownikC}"  Grid.Column="1" Grid.Row="8" />
+        <Button  Content="Usuń" Margin="5,5,5,5" Background ="Red" Command="{Binding deletePracownikC}"  Grid.Column="2" Grid.Row="8" />
+        <Button  Content="Aktualizuj" Margin="5,5,5,5" Background ="Blue" Command="{Binding updatePracownikC}"  Grid.Column="3" Grid.Row="8" />
+
+
+
+
+    </Grid>
+
+
+
+</UserControl>
